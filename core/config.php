@@ -1,7 +1,7 @@
 <?php  
 
 class library {
-public function __construct() {
+	public function __construct() {
             $this->db = new PDO("mysql:host=localhost;dbname=sekolah","root", "");
         }
 
@@ -17,11 +17,17 @@ public function __construct() {
 			return "success";
 		}
 	}
+
+	public function login($name) {
+		$sql ="SELECT * FROM user where name = '$name' OR email = '$name' ";
+		$query = $this->db->query($sql);
+		return $query;
+	}
 }
 
 ?>
 
 
-<!-- 	public function __construct(){
-		$this->db = new PDO("mysql:host=localhost;dbname=sekolah","root","");
-	} -->
+<!-- // public function __construct(){
+// 		$this->db = new PDO("mysql:host=localhost;dbname=sekolah","root","");
+// 	} -->
